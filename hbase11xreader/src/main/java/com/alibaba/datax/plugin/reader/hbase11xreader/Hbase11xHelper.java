@@ -36,6 +36,9 @@ public class Hbase11xHelper {
             throw DataXException.asDataXException(Hbase11xReaderErrorCode.REQUIRED_VALUE, "读 Hbase 时需要配置hbaseConfig，其内容为 Hbase 连接信息，请联系 Hbase PE 获取该信息.");
         }
         org.apache.hadoop.conf.Configuration hConfiguration = HBaseConfiguration.create();
+        hConfiguration.set("hbase.security.authentication.tbds.secureid", "eYyrgnWqE4iwGNyCjj6epfIaxGEJLHr7RINk");
+        hConfiguration.set("hbase.security.authentication.tbds.securekey", "KH7louzbWgtM6lI0y2KVf9RshLcBZMD9");
+        hConfiguration.set("hbase_security_authentication_tbds_username", "hbase");
         try {
             Map<String, String> hbaseConfigMap = JSON.parseObject(hbaseConfig, new TypeReference<Map<String, String>>() {});
             // 用户配置的 key-value 对 来表示 hbaseConfig
@@ -51,9 +54,6 @@ public class Hbase11xHelper {
         }
         org.apache.hadoop.hbase.client.Connection hConnection = null;
         try {
-            hConfiguration.set("hbase.security.authentication.tbds.secureid", "eYyrgnWqE4iwGNyCjj6epfIaxGEJLHr7RINk");
-            hConfiguration.set("hbase.security.authentication.tbds.securekey", "KH7louzbWgtM6lI0y2KVf9RshLcBZMD9");
-            hConfiguration.set("hbase_security_authentication_tbds_username", "hbase");
             hConnection = ConnectionFactory.createConnection(hConfiguration);
 
         } catch (Exception e) {
