@@ -99,7 +99,7 @@
         <module>gdbwriter</module>
         <module>cassandrawriter</module>
         <module>clickhousewriter</module>
-<!--        <module>oscarwriter</module>-->
+<!--&lt;!&ndash;        <module>oscarwriter</module>&ndash;&gt;-->
         <module>oceanbasev10writer</module>
         <!-- common support module -->
         <module>plugin-rdbms-util</module>

@@ -43,11 +43,17 @@ public class Hbase11xHelper {
             for (Map.Entry<String, String> entry : hbaseConfigMap.entrySet()) {
                 hConfiguration.set(entry.getKey(), entry.getValue());
             }
+            if (hbaseConfigMap.get("hbase.site.xml.path") !=null){
+
+            }
         } catch (Exception e) {
             throw DataXException.asDataXException(Hbase11xReaderErrorCode.GET_HBASE_CONNECTION_ERROR, e);
         }
         org.apache.hadoop.hbase.client.Connection hConnection = null;
         try {
+            hConfiguration.set("hbase.security.authentication.tbds.secureid", "eYyrgnWqE4iwGNyCjj6epfIaxGEJLHr7RINk");
+            hConfiguration.set("hbase.security.authentication.tbds.securekey", "KH7louzbWgtM6lI0y2KVf9RshLcBZMD9");
+            hConfiguration.set("hbase_security_authentication_tbds_username", "hbase");
             hConnection = ConnectionFactory.createConnection(hConfiguration);
 
         } catch (Exception e) {
